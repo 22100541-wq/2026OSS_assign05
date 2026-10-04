@@ -1,81 +1,118 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-        let menus=[{
-            id: 1,
-            name: "오코노미야끼",
-            category: "철판요리",
-            price: 15000,
-            quantity: 1,
-            status: "판매중"
-
+      let menus = [
+        {
+          id: 1,
+          name: "오코노미야끼",
+          category: "철판요리",
+          price: 15000,
+          quantity: 1,
+          status: "판매중",
         },
         {
-            id: 2,
-            name: "가라야게",
-            category: "튀김",
-            price: 18000,
-            quantity: 8,
-            status: "판매중"
-
-        },{
-            id: 3,
-            name: "사시미",
-            category: "회",
-            price: 55000,
-            quantity: 18,
-            status: "판매중"
-
-        },{
-            id: 4,
-            name: "맥주 500cc",
-            category: "주류",
-            price: 5000,
-            quantity: "1",
-            status: "판매중"
-
-        }
-    ]
+          id: 2,
+          name: "가라야게",
+          category: "튀김",
+          price: 18000,
+          quantity: 8,
+          status: "판매중",
+        },
+        {
+          id: 3,
+          name: "사시미",
+          category: "회",
+          price: 55000,
+          quantity: 18,
+          status: "판매중",
+        },
+        {
+          id: 4,
+          name: "맥주 500cc",
+          category: "주류",
+          price: 5000,
+          quantity: "1",
+          status: "판매중",
+        },
+      ];
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <form id="menu">
-        <label>메뉴 이름</label>
-        <input type="text" id="name">
+      <label>메뉴 이름</label>
+      <input type="text" id="name" /><br />
 
-         <label>종류</label>
-          <input type="text" id="category">
+      <label>종류</label>
+      <input type="text" id="category" /><br />
 
-          <label>가격</label>
-          <input type="number" id="price">
+      <label>가격</label>
+      <input type="number" id="price" /><br />
 
-           <label>수량</label>
-           <input type="number" id="quantity">
+      <label>수량</label>
+      <input type="number" id="quantity" /><br />
 
-            <label>상태</label>
-            <input type="radio" name="status" value="판매중">
-            <label>판매중</label>
-            <input type="radio" name="status" value="품절">
-            <label>품절</label>
-            
-            
+      <label>상태</label>
+      <input type="radio" name="status" value="판매중" />
+      <label>판매중</label>
+      <input type="radio" name="status" value="품절" />
+      <label>품절</label><br />
+
+      <button type="submit">추가</button>
     </form>
 
     <table>
-        <tr>
-            <th>id</th>
-            <th>이름</th>
-            <th>종류</th>
-            <th>가격</th>
-            <th>수량</th>
-            <th>상태</th>
-
-        </tr>
+      <tr>
+        <th>id</th>
+        <th>이름</th>
+        <th>종류</th>
+        <th>가격</th>
+        <th>수량</th>
+        <th>상태</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>오코노미야끼</td>
+        <td>철판요리</td>
+        <td>15000</td>
+        <td>1</td>
+        <td>판매중</td>
+        <td><button>수정</button></td>
+        <td><button>삭제</button></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>가라아게</td>
+        <td>튀김</td>
+        <td>18000</td>
+        <td>8</td>
+        <td>판매중</td>
+        <td><button>수정</button></td>
+        <td><button>삭제</button></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>사시미</td>
+        <td>회</td>
+        <td>55000</td>
+        <td>18</td>
+        <td>판매중</td>
+        <td><button>수정</button></td>
+        <td><button>삭제</button></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>맥주 500cc</td>
+        <td>주류</td>
+        <td>5000</td>
+        <td>1</td>
+        <td>판매중</td>
+        <td><button>수정</button></td>
+        <td><button>삭제</button></td>
+      </tr>
     </table>
-    
-</body>
+  </body>
 </html>
