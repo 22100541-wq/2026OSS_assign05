@@ -85,6 +85,7 @@
           bt.textContent = "수정";
           td7.appendChild(bt);
           tr.appendChild(td7);
+
           bt.addEventListener("click", function () {
             editIndex = i;
             name.value = menus[i].name;
@@ -101,7 +102,22 @@
             }
             submitBt.textContent = "저장";
           });
+          const td8 = document.createElement("td");
+          const delBt = document.createElement("button");
 
+          delBt.textContent = "삭제";
+
+          td8.appendChild(delBt);
+          tr.appendChild(td8);
+
+          delBt.addEventListener("click", function () {
+            let result = confirm("삭제하시겠습니까?");
+            if (result) {
+              menus.splice(i, 1);
+              tr.remove();
+            }
+            console.log(menus);
+          });
           table.appendChild(tr);
         }
 
@@ -143,7 +159,6 @@
           }
 
           if (editIndex === -1) {
-
             let newMenu = {
               id: menus.length + 1,
               name: name.value,
@@ -153,44 +168,43 @@
               status: statusValue,
             };
 
-          menus.push(newMenu);
+            menus.push(newMenu);
 
-          for (let i = menus.length - 1; i < menus.length; i++) {
-            const tr = document.createElement("tr");
+            for (let i = menus.length - 1; i < menus.length; i++) {
+              const tr = document.createElement("tr");
 
-            const td1 = document.createElement("td");
-            td1.textContent = menus[i].id;
-            tr.appendChild(td1);
+              const td1 = document.createElement("td");
+              td1.textContent = menus[i].id;
+              tr.appendChild(td1);
 
-            const td2 = document.createElement("td");
-            td2.textContent = menus[i].name;
-            tr.appendChild(td2);
+              const td2 = document.createElement("td");
+              td2.textContent = menus[i].name;
+              tr.appendChild(td2);
 
-            const td3 = document.createElement("td");
-            td3.textContent = menus[i].category;
-            tr.appendChild(td3);
+              const td3 = document.createElement("td");
+              td3.textContent = menus[i].category;
+              tr.appendChild(td3);
 
-            const td4 = document.createElement("td");
-            td4.textContent = menus[i].price;
-            tr.appendChild(td4);
+              const td4 = document.createElement("td");
+              td4.textContent = menus[i].price;
+              tr.appendChild(td4);
 
-            const td5 = document.createElement("td");
-            td5.textContent = menus[i].quantity;
-            tr.appendChild(td5);
+              const td5 = document.createElement("td");
+              td5.textContent = menus[i].quantity;
+              tr.appendChild(td5);
 
-            const td6 = document.createElement("td");
-            td6.textContent = menus[i].status;
-            tr.appendChild(td6);
+              const td6 = document.createElement("td");
+              td6.textContent = menus[i].status;
+              tr.appendChild(td6);
 
-            const td7 = document.createElement("td");
-            const bt = document.createElement("button");
+              const td7 = document.createElement("td");
+              const bt = document.createElement("button");
 
-            bt.textContent = "수정";
+              bt.textContent = "수정";
 
-            td7.appendChild(bt);
-            tr.appendChild(td7);
-             bt.addEventListener("click", function () {
-
+              td7.appendChild(bt);
+              tr.appendChild(td7);
+              bt.addEventListener("click", function () {
                 editIndex = i;
 
                 name.value = menus[i].name;
@@ -207,16 +221,29 @@
                 }
 
                 submitBt.textContent = "저장";
-
               });
+              const td8 = document.createElement("td");
+              const delBt = document.createElement("button");
 
+              delBt.textContent = "삭제";
+
+              td8.appendChild(delBt);
+              tr.appendChild(td8);
+
+              delBt.addEventListener("click", function () {
+                let result = confirm("삭제하시겠습니까?");
+
+                if (result) {
+                  menus.splice(i, 1);
+                  tr.remove();
+                }
+
+                console.log(menus);
+              });
 
               table.appendChild(tr);
             }
-
-          }
-          else {
-
+          } else {
             menus[editIndex].name = name.value;
             menus[editIndex].category = category.value;
             menus[editIndex].price = price.value;
@@ -235,7 +262,6 @@
             editIndex = -1;
             submitBt.textContent = "추가";
           }
-
 
           console.log(menus);
         });
