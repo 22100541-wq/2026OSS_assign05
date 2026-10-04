@@ -8,16 +8,16 @@
         let menus=[{
             id: 1,
             name: "오코노미야끼",
-            catagory: "철판요리",
+            category: "철판요리",
             price: 15000,
             quantity: 1,
-            serve: "판매중"
+            status: "판매중"
 
         },
         {
             id: 2,
             name: "가라야게",
-            catagory: "튀김",
+            category: "튀김",
             price: 18000,
             quantity: 8,
             status: "판매중"
@@ -25,17 +25,17 @@
         },{
             id: 3,
             name: "사시미",
-            catagory: "회",
+            category: "회",
             price: 55000,
             quantity: 18,
             status: "판매중"
 
         },{
             id: 4,
-            name: "맥주",
-            catagory: "주류",
+            name: "맥주 500cc",
+            category: "주류",
             price: 5000,
-            quantity: "500cc",
+            quantity: "1",
             status: "판매중"
 
         }
@@ -43,6 +43,27 @@
     </script>
 </head>
 <body>
+    <form id="menu">
+        <label>메뉴 이름</label>
+        <input type="text" id="name">
+
+         <label>종류</label>
+          <input type="text" id="category">
+
+          <label>가격</label>
+          <input type="number" id="price">
+
+           <label>수량</label>
+           <input type="number" id="quantity">
+
+            <label>상태</label>
+            <input type="radio" name="status" value="판매중">
+            <label>판매중</label>
+            <input type="radio" name="status" value="품절">
+            <label>품절</label>
+            
+            
+    </form>
     
 </body>
 </html>
