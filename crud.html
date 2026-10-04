@@ -39,6 +39,47 @@
           status: "판매중",
         },
       ];
+
+      window.addEventListener("load",function(){
+         const form = document.querySelector("#menu");
+    const name = document.querySelector("#name");
+    const category = document.querySelector("#category");
+    const price = document.querySelector("#price");
+    const quantity = document.querySelector("#quantity");
+    const selling = document.querySelector("#selling");
+const soldout = document.querySelector("#soldout");
+    form.addEventListener("submit", function(e){
+
+        e.preventDefault();
+
+        
+
+        if(name.value === ""){
+            alert("메뉴 이름을 입력하세요.");
+            return;
+        }
+
+        if(category.value === ""){
+            alert("종류를 입력하세요.");
+            return;
+        }
+
+        if(price.value === ""){
+            alert("가격을 입력하세요.");
+            return;
+        }
+
+        if(quantity.value === ""){
+            alert("수량을 입력하세요.");
+            return;
+        }
+
+        if(status === null){
+            alert("상태를 선택하세요.");
+            return;
+        }
+
+      })
     </script>
   </head>
   <body>
@@ -56,9 +97,9 @@
       <input type="number" id="quantity" /><br />
 
       <label>상태</label>
-      <input type="radio" name="status" value="판매중" />
+      <input type="radio" id="selling" name="status" value="판매중" />
       <label>판매중</label>
-      <input type="radio" name="status" value="품절" />
+      <input type="radio" id="soldout" name="status" value="품절" />
       <label>품절</label><br />
 
       <button type="submit">추가</button>
