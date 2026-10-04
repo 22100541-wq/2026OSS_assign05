@@ -48,39 +48,62 @@
         const quantity = document.querySelector("#quantity");
         const selling = document.querySelector("#selling");
         const soldout = document.querySelector("#soldout");
-
         const table = document.querySelector("#table");
+        const submitBt = document.querySelector("#submitBt");
 
-       for(let i=0; i<menus.length; i++){
+        let editIndex = -1;
 
-    const tr = document.createElement("tr");
+        for (let i = 0; i < menus.length; i++) {
+          const tr = document.createElement("tr");
 
-    const td1 = document.createElement("td");
-    td1.textContent = menus[i].id;
-    tr.appendChild(td1);
+          const td1 = document.createElement("td");
+          td1.textContent = menus[i].id;
+          tr.appendChild(td1);
 
-    const td2 = document.createElement("td");
-    td2.textContent = menus[i].name;
-    tr.appendChild(td2);
+          const td2 = document.createElement("td");
+          td2.textContent = menus[i].name;
+          tr.appendChild(td2);
 
-    const td3 = document.createElement("td");
-    td3.textContent = menus[i].category;
-    tr.appendChild(td3);
+          const td3 = document.createElement("td");
+          td3.textContent = menus[i].category;
+          tr.appendChild(td3);
 
-    const td4 = document.createElement("td");
-    td4.textContent = menus[i].price;
-    tr.appendChild(td4);
+          const td4 = document.createElement("td");
+          td4.textContent = menus[i].price;
+          tr.appendChild(td4);
 
-    const td5 = document.createElement("td");
-    td5.textContent = menus[i].quantity;
-    tr.appendChild(td5);
+          const td5 = document.createElement("td");
+          td5.textContent = menus[i].quantity;
+          tr.appendChild(td5);
 
-    const td6 = document.createElement("td");
-    td6.textContent = menus[i].status;
-    tr.appendChild(td6);
+          const td6 = document.createElement("td");
+          td6.textContent = menus[i].status;
+          tr.appendChild(td6);
 
-    table.appendChild(tr);
-}
+          const td7 = document.createElement("td");
+          const bt = document.createElement("button");
+          bt.textContent = "수정";
+          td7.appendChild(bt);
+          tr.appendChild(td7);
+          bt.addEventListener("click", function () {
+            editIndex = i;
+            name.value = menus[i].name;
+            category.value = menus[i].category;
+            price.value = menus[i].price;
+            quantity.value = menus[i].quantity;
+
+            if (menus[i].status === "판매중") {
+              selling.checked = true;
+            }
+
+            if (menus[i].status === "품절") {
+              soldout.checked = true;
+            }
+            submitBt.textContent = "저장";
+          });
+
+          table.appendChild(tr);
+        }
 
         form.addEventListener("submit", function (e) {
           e.preventDefault();
@@ -105,65 +128,114 @@
             return;
           }
 
-
           if (selling.checked === false && soldout.checked === false) {
             alert("상태를 선택하세요.");
             return;
           }
-           let statusValue = "";
+          let statusValue = "";
 
-          if(selling.checked){
+          if (selling.checked) {
             statusValue = selling.value;
           }
 
-          if(soldout.checked){
+          if (soldout.checked) {
             statusValue = soldout.value;
           }
 
-          let newMenu = {
-            id: menus.length + 1,
-            name: name.value,
-            category: category.value,
-            price: price.value,
-            quantity: quantity.value,
-            status: statusValue,
-          };
+          if (editIndex === -1) {
+
+            let newMenu = {
+              id: menus.length + 1,
+              name: name.value,
+              category: category.value,
+              price: price.value,
+              quantity: quantity.value,
+              status: statusValue,
+            };
 
           menus.push(newMenu);
-           
-          for(let i=menu.length-1; i<menus.length; i++){
 
-    const tr = document.createElement("tr");
+          for (let i = menus.length - 1; i < menus.length; i++) {
+            const tr = document.createElement("tr");
 
-    const td1 = document.createElement("td");
-    td1.textContent = menus[i].id;
-    tr.appendChild(td1);
+            const td1 = document.createElement("td");
+            td1.textContent = menus[i].id;
+            tr.appendChild(td1);
 
-    const td2 = document.createElement("td");
-    td2.textContent = menus[i].name;
-    tr.appendChild(td2);
+            const td2 = document.createElement("td");
+            td2.textContent = menus[i].name;
+            tr.appendChild(td2);
 
-    const td3 = document.createElement("td");
-    td3.textContent = menus[i].category;
-    tr.appendChild(td3);
+            const td3 = document.createElement("td");
+            td3.textContent = menus[i].category;
+            tr.appendChild(td3);
 
-    const td4 = document.createElement("td");
-    td4.textContent = menus[i].price;
-    tr.appendChild(td4);
+            const td4 = document.createElement("td");
+            td4.textContent = menus[i].price;
+            tr.appendChild(td4);
 
-    const td5 = document.createElement("td");
-    td5.textContent = menus[i].quantity;
-    tr.appendChild(td5);
+            const td5 = document.createElement("td");
+            td5.textContent = menus[i].quantity;
+            tr.appendChild(td5);
 
-    const td6 = document.createElement("td");
-    td6.textContent = menus[i].status;
-    tr.appendChild(td6);
+            const td6 = document.createElement("td");
+            td6.textContent = menus[i].status;
+            tr.appendChild(td6);
 
-    table.appendChild(tr);
-}
+            const td7 = document.createElement("td");
+            const bt = document.createElement("button");
+
+            bt.textContent = "수정";
+
+            td7.appendChild(bt);
+            tr.appendChild(td7);
+             bt.addEventListener("click", function () {
+
+                editIndex = i;
+
+                name.value = menus[i].name;
+                category.value = menus[i].category;
+                price.value = menus[i].price;
+                quantity.value = menus[i].quantity;
+
+                if (menus[i].status === "판매중") {
+                  selling.checked = true;
+                }
+
+                if (menus[i].status === "품절") {
+                  soldout.checked = true;
+                }
+
+                submitBt.textContent = "저장";
+
+              });
 
 
-          
+              table.appendChild(tr);
+            }
+
+          }
+          else {
+
+            menus[editIndex].name = name.value;
+            menus[editIndex].category = category.value;
+            menus[editIndex].price = price.value;
+            menus[editIndex].quantity = quantity.value;
+            menus[editIndex].status = statusValue;
+
+            const rows = table.querySelectorAll("tr");
+            const tds = rows[editIndex + 1].querySelectorAll("td");
+
+            tds[0].textContent = menus[editIndex].id;
+            tds[1].textContent = menus[editIndex].name;
+            tds[2].textContent = menus[editIndex].category;
+            tds[3].textContent = menus[editIndex].price;
+            tds[4].textContent = menus[editIndex].quantity;
+            tds[5].textContent = menus[editIndex].status;
+            editIndex = -1;
+            submitBt.textContent = "추가";
+          }
+
 
           console.log(menus);
         });
@@ -190,7 +262,7 @@
       <input type="radio" id="soldout" name="status" value="품절" />
       <label>품절</label><br />
 
-      <button type="submit">추가</button>
+      <button type="submit" id="submitBt">추가</button>
     </form>
 
     <table id="table">
@@ -202,7 +274,6 @@
         <th>수량</th>
         <th>상태</th>
       </tr>
-      
     </table>
   </body>
 </html>
